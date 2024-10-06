@@ -9,11 +9,13 @@
     $footerView=$this->getConfigs()->getFooterView();
     $EmptyQueryView=$this->getConfigs()->getEmptyQueryView();
 @endphp
-<div>
+<div> 
     <div 
         x-ignore 
         ax-load
+        data-css-before="app.css"
         x-load-css="[@js(FilamentAsset::getStyleHref('global-search-modal', 'charrafimed/global-search-modal'))]" 
+        x-load-js="[@js(FilamentAsset::getScriptSrc('animation', 'charrafimed/global-search-modal'))]" 
         ax-load-src="{{ FilamentAsset::getAlpineComponentSrc('global-search-modal-observer', 'charrafimed/global-search-modal') }}"
         x-data="observer"
     >
@@ -103,4 +105,25 @@
 
     </x-global-search-modal::modal>    
 </div>
+<script>
+    document.addEventListener('alpine:init', () => {
+        Alpine.store('globalSearchModalStore', {
+            isOpen: false,
+            showModal() {
+                this.isOpen = true;
+            },
+            hideModal() {  
+                this.isOpen = false;
+                const searchField = document.querySelector(".fi-global-search-field");
+                if (searchField) {
+                    searchField.style.display = "block";
+                    const inputElement = searchField.querySelector("input[type=search]");
+                    if (inputElement) {
+                        inputElement.disabled = false;
+                    }
+                }
+            },
+        })
+    })
+</script>
 </div>

@@ -26,9 +26,9 @@ class GlobalSearchModalServiceProvider extends PackageServiceProvider
         FilamentAsset::register(
             assets: [
                 Js::make(
-                    id: 'modalStore',
-                    path: __DIR__.'/../dist/modalStore.js'
-                ),
+                    id: 'animation',
+                    path: __DIR__.'/../dist/animation.js'
+                )->loadedOnRequest(), 
                 Css::make(
                     id: 'global-search-modal',
                     path: __DIR__.'/../dist/css/global-search-modal.css'

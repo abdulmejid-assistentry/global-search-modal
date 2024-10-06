@@ -69,9 +69,9 @@ const defaultOptions = {
 
 compile({
   ...defaultOptions,
-  entryPoints: [`./resources/js/index.js`],
-  outfile: `./dist/modalStore.js`,
-});
+  entryPoints: [`./resources/js/animation.js`],
+  outfile: `./dist/animation.js`,
+}); 
 
 compile({
   ...defaultOptions,
